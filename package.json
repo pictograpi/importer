@@ -1,0 +1,24 @@
+{
+  "name": "pictograpi-api",
+  "version": "1.0.0",
+  "description": "The API for pictographs",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./scripts/test.js",
+    "importer": "node ./scripts/importer.js"
+  },
+  "author": "Adrián Gómez - https://pictograpi.com",
+  "license": "CC-BY-NC-SA-3.0",
+  "dependencies": {
+    "decompress": "^4.2.0",
+    "dotenv": "^5.0.0",
+    "firebase": "^4.10.0",
+    "progress": "^2.0.0",
+    "shelljs": "^0.8.1",
+    "winston": "^2.4.0",
+    "xmldom": "^0.1.27"
+  },
+  "devDependencies": {
+    "node": "^9.5.0"
+  }
+}
