@@ -4,21 +4,30 @@
   "description": "The API for pictographs",
   "main": "index.js",
   "scripts": {
-    "test": "node ./scripts/test.js",
-    "importer": "node ./scripts/importer.js"
+    "clean": "rm -rf ./tmp && rm -rf ./importer-debug.log",
+    "xml-standarizer": "node ./src/tasks/xml-standarizer.js",
+    "import-images": "node ./src/tasks/import-images.js",
+    "import-types": "node ./src/tasks/import-types.js",
+    "import-languages": "node ./src/tasks/import-languages.js",
+    "unzip": "node ./src/tasks/unzip.js",
+    "importer":
+      "run-s clean unzip xml-standarizer import-types import-languages import-images"
   },
   "author": "Adrián Gómez - https://pictograpi.com",
   "license": "CC-BY-NC-SA-3.0",
   "dependencies": {
     "decompress": "^4.2.0",
     "dotenv": "^5.0.0",
-    "firebase": "^4.10.0",
+    "firebase-admin": "^5.9.0",
+    "imageinfo": "^1.0.4",
     "progress": "^2.0.0",
+    "replace": "^0.3.0",
     "shelljs": "^0.8.1",
     "winston": "^2.4.0",
     "xmldom": "^0.1.27"
   },
   "devDependencies": {
-    "node": "^9.5.0"
+    "node": "^9.5.0",
+    "npm-run-all": "^4.1.2"
   }
 }

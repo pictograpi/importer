@@ -3,3 +3,4 @@ tmp
 .env
 .vscode
 service-account-key.json
+importer-debug.log
