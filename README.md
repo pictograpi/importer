@@ -92,3 +92,41 @@ env ZIP=../../Documents/pictos.zip CONTINUE=27591.png npm run importer
 ```
 
 Using the previous command, the importer will continue from the image with id 27591.png.
+
+# 3. API Schema
+
+Pictograpi Importer uses two things of Google Firebase:
+
+* Firebase Storage: It is a cloud file storage that exposes the files through the Firebase API. These files may be accessed through the [Firebase Storage API](https://firebase.google.com/docs/storage/).
+* Cloud Firestore: It is a NoSQL database that stores all pictograph information. This is the schema of the database:
+
+```
+{
+  "images": [{
+    "format": "(String) Format of the image. PNG, JPEG, etc.",
+    "height": "(Number) Height of the image",
+    "id": "(Number) Unique id of the image in the XML import file",
+    "mimeType": "(String) mimetype of the image. image/png, image/jpeg, etc.",
+    "storageId": "(String) Id referencing the image inside the Firebase Storage.",
+    "width": "(Number) Width of the image."
+  }],
+  "languages": [{
+    "code": "(String) Unique code of the language. es-ES, es-CA, etc.",
+    "name": "(String) Humanize name of the language"
+  }],
+  "types": [{
+    "code": "(String) Unique code of the type. adjective, common-noun, etc.",
+    "name": "(String) Humanize name of the type"
+  }],
+  "words": [{
+    "imageId": "(Number) Id referencing the image",
+    "languageCode": "(String) Code referencing the language",
+    "typeCode": "(String) Code referencing the type",
+    "word": "(String) Word describing the pictograph"
+  }]
+}
+```
+
+# 4. Requesting the API
+
+The API generated may be requested using the Firebase API. Follow the [official documentation](https://firebase.google.com/docs/) for more information.
