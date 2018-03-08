@@ -2,7 +2,7 @@
 
 Welcome to the Pictograpi Importer project.
 
-This project makes easier to create your own pictograph API from a ZIP file. It extracts the information from the ZIP and uses [Google Firebase](https://firebase.google.com) to store images and its data associated.
+This project makes easier to create your own pictograph API from a ZIP file from [ARASAAC](http://www.arasaac.org). It extracts the information from the ZIP and uses [Google Firebase](https://firebase.google.com) to store images and its data associated.
 
 Once everything is imported inside Google Firebase you can use the [Firebase API](https://firebase.google.com/docs/) in any supported OS to request information needed about pictographs and images.
 
@@ -63,6 +63,20 @@ The importer uses npm tasks for its execution. These steps are described for Mac
 
 Use `npm install` to install all dependencies.
 
+## 2.2 Download pictographs
+
+This task is separated into a different task because you just need to execute it once.
+
+```
+# env URL=url.zip npm run download-pictographs
+# For example:
+env URL=https://cdn.pictograpi.com/pictographs.zip npm run download-pictographs
+```
+
+To make this easier we have uploaded to the Pictograpi CDN some package of pictographs from ARASAAC. Use one of links below:
+
+* Package 21/10/2016: https://cdn.pictograpi.com/pictographs-21102016.zip
+
 ## 2.2 Running the importer
 
 The importer supports different tasks depending on your needs.
@@ -72,10 +86,7 @@ The importer supports different tasks depending on your needs.
 This command will run a full import of everything found in the ZIP file.
 
 ```
-# env ZIP=./path-to-zip-file.zip npm run importer
-# For example:
-
-env ZIP=../../Documents/pictos.zip npm run importer
+npm run importer
 ```
 
 A full log will be created in the file `./importer-debug.log`.
@@ -85,10 +96,10 @@ A full log will be created in the file `./importer-debug.log`.
 If something goes wrong or you split the execution in batches, you may use this command.
 
 ```
-# env ZIP=./path-to-zip-file.zip CONTINUE=image-id.png npm run importer
+# env CONTINUE=image-id.png npm run importer
 # For example:
 
-env ZIP=../../Documents/pictos.zip CONTINUE=27591.png npm run importer
+env CONTINUE=27591.png npm run importer
 ```
 
 Using the previous command, the importer will continue from the image with id 27591.png.

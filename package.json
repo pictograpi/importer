@@ -5,19 +5,19 @@
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf ./tmp && rm -rf ./importer-debug.log",
+    "download-pictographs": "node ./src/tasks/download.js",
     "xml-standarizer": "node ./src/tasks/xml-standarizer.js",
     "import-images": "node ./src/tasks/import-images.js",
     "import-types": "node ./src/tasks/import-types.js",
     "import-languages": "node ./src/tasks/import-languages.js",
-    "unzip": "node ./src/tasks/unzip.js",
-    "importer":
-      "run-s clean unzip xml-standarizer import-types import-languages import-images"
+    "importer": "run-s clean xml-standarizer import-types import-languages import-images"
   },
   "author": "Adrián Gómez - https://pictograpi.com",
   "license": "CC-BY-NC-SA-3.0",
   "dependencies": {
     "decompress": "^4.2.0",
     "dotenv": "^5.0.0",
+    "download": "^6.2.5",
     "firebase-admin": "^5.9.0",
     "imageinfo": "^1.0.4",
     "progress": "^2.0.0",
