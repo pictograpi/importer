@@ -10,6 +10,16 @@ We hope this project will help you to develop your own projects.
 
 Keep coding!
 
+# Table of contents
+
+* [Installation](#installation)
+* [Usage](#usage)
+  * [Import pictographs](#import-pictographs)
+  * [API Schema](#api-schema)
+  * [Requesting the API](#requesting-the-api)
+* [Credits](#credits)
+* [License](#license)
+
 # Installation
 
 To start using this importer just clone/download the code and follow next steps. This project relays on NodeJS and NPM, make sure they are installed on your computer.
