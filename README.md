@@ -75,7 +75,7 @@ env URL=https://cdn.pictograpi.com/pictographs.zip npm run download-pictographs
 
 To make this easier we have uploaded to the Pictograpi CDN some package of pictographs from ARASAAC. Use one of links below:
 
-* Package 21/10/2016: https://cdn.pictograpi.com/pictographs-21102016.zip
+* Package 21/10/2016: https://cdn.pictograpi.com/api-assets/pictographs-21102016.zip
 
 ## 2.2 Running the importer
 
