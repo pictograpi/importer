@@ -10,15 +10,15 @@ We hope this project will help you to develop your own projects.
 
 Keep coding!
 
-# Execution
+# Installation
 
-Before running the importer you should take into account a pair of things:
+To start using this importer just clone/download the code and follow next steps. This project relays on NodeJS and NPM, make sure they are installed on your computer.
 
-* A full import will take several hours although it may be resumed.
-* Importer is going to execute a lot of operations in Google Firebase. This may cause a "Quota exceeded" error. **We recommend to pay for [Blaze account](https://firebase.google.com/pricing/?authuser=0)** because otherwise Google Firebase will only allow 20.000 operations. An estimated cost for a full import is 2$-5$.
-* The importer uses npm tasks for its execution. These steps are described for MacOS. **Environment variables may be configured differently in other OS.**
+## Install dependencies
 
-## 1. Configuration
+Run `npm install` to install all dependencies.
+
+## Configure the importer
 
 Follow these steps to configure and running the importer.
 
@@ -56,13 +56,17 @@ FIREBASE_ACCOUNT_KEY=./pictograpi-test-firebase-adminsdk-12345.json
 FIREBASE_STORAGE_BUCKET=pictograpi-test-b18c5.appspot.com
 ```
 
-## 2. Install dependencies
+# Usage
 
-Use `npm install` to install all dependencies.
+Before running the importer you should take into account a pair of things:
 
-## 3. Import pictographs
+* A full import will take several hours although it may be resumed.
+* Importer is going to execute a lot of operations in Google Firebase. This may cause a "Quota exceeded" error. **We recommend to pay for [Blaze account](https://firebase.google.com/pricing/?authuser=0)** because otherwise Google Firebase will only allow 20.000 operations. An estimated cost for a full import is 2$-5$.
+* The importer uses npm tasks for its execution. These steps are described for MacOS. **Environment variables may be configured differently in other OS.**
 
-### 3.1 Download pictographs
+## Import pictographs
+
+### Download pictographs
 
 This task is separated into a different task because you just need to execute it once.
 
@@ -76,7 +80,7 @@ To make this easier we have uploaded to the Pictograpi CDN some package of picto
 
 * Package 21/10/2016: https://cdn.pictograpi.com/api-assets/pictographs-21102016.zip
 
-### 3.2 Running the importer
+### Import pictographs
 
 The importer supports different tasks depending on your needs.
 
@@ -103,7 +107,7 @@ env CONTINUE=27591.png npm run importer
 
 Using the previous command, the importer will continue from the image with id 27591.png.
 
-# API Schema
+## API Schema
 
 Pictograpi Importer uses two things of Google Firebase:
 
@@ -137,6 +141,18 @@ Pictograpi Importer uses two things of Google Firebase:
 }
 ```
 
-# Requesting the API
+## Requesting the API
 
 The API generated may be requested using the Firebase API. Follow the [official documentation](https://firebase.google.com/docs/) for more information.
+
+# Credits
+
+This project is developed thanks to:
+
+* [Pictograpi Team](https://pictograpi.com)
+* [ARASAAC](http://arasaac.org)
+* [UNIZAR](http://unizar.es)
+
+# License
+
+Attribution-NonCommercial-ShareAlike 3.0 Unported
