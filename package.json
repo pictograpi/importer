@@ -4,18 +4,21 @@
   "description": "The API for pictographs",
   "main": "index.js",
   "scripts": {
-    "clean": "rm -rf ./tmp && rm -rf ./importer-debug.log",
-    "download": "node ./src/tasks/download.js",
+    "clean": "rm -rf ./tmp",
+    "download": "npm run clean && node ./src/tasks/download.js",
     "xml-standarizer": "node ./src/tasks/xml-standarizer.js",
     "import-images": "node ./src/tasks/import-images.js",
     "import-types": "node ./src/tasks/import-types.js",
     "import-languages": "node ./src/tasks/import-languages.js",
-    "importer":
-      "run-s clean xml-standarizer import-types import-languages import-images"
+    "import-verbs": "node ./src/tasks/import-verbs.js",
+    "importer-pictographs":
+      "run-s xml-standarizer import-types import-languages import-images",
+    "importer-verbs": "npm run import-verbs"
   },
   "author": "Adrián Gómez - https://pictograpi.com",
   "license": "CC-BY-NC-SA-3.0",
   "dependencies": {
+    "csv-parse": "^2.0.4",
     "decompress": "^4.2.0",
     "dotenv": "^5.0.0",
     "download": "^6.2.5",

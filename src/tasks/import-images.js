@@ -4,13 +4,13 @@ const backendInit = require("../backend/init");
 const backendImages = require("../backend/images");
 const backendTypes = require("../backend/types");
 const backendLanguages = require("../backend/languages");
+const backendWords = require("../backend/words");
 const path = require("path");
 const xml = require("../utils/xml");
 const fs = require("fs");
 const imageinfo = require("imageinfo");
 const ProgressBar = require("progress");
 const logger = require("../utils/logger");
-let db;
 
 module.exports = (async () => {
   const data = xml.parseFile(path.resolve("../tmp/images.xml"));
@@ -92,42 +92,26 @@ async function addWords(image, languages, types) {
       language => language.code === word.languageCode
     );
     const isValidType = types.some(type => type.code === word.typeCode);
-    const isExisting = await isExistingWord(word, image);
+    const isExisting = await backendWords.exists({
+      word: word.word,
+      languageCode: word.languageCode,
+      typeCode: word.typeCode,
+      imageId: image.id
+    });
 
     if (isExisting) {
       logger.info("Word already existing:", word.word, image.id);
     } else if (!isValidLanguage || !isValidType) {
       logger.error("Word is invalid:", word);
     } else {
-      await firebaseAdmin
-        .firestore()
-        .collection("words")
-        .add({
-          word: word.word,
-          languageCode: word.languageCode,
-          typeCode: word.typeCode,
-          imageId: image.id
-        });
+      await backendWords.add({
+        word: word.word,
+        languageCode: word.languageCode,
+        typeCode: word.typeCode,
+        imageId: image.id
+      });
 
       logger.info("Word inserted:", word.word, image.id);
     }
   }
-}
-
-async function isExistingWord(word, image) {
-  const isExistingWord = await firebaseAdmin
-    .firestore()
-    .collection("words")
-    .where("word", "==", word.word)
-    .where("languageCode", "==", word.languageCode)
-    .where("typeCode", "==", word.typeCode)
-    .where("imageId", "==", image.id)
-    .get()
-    .then(snapshot => {
-      const docs = [];
-      snapshot.forEach(doc => docs.push(doc.data()));
-      return docs.length > 0;
-    });
-
-  return isExistingWord;
 }

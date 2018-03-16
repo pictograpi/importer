@@ -30,17 +30,17 @@ function add({ code, name }) {
  * @param {string} language.code Code of the language.
  * @returns {Promise.<boolean>} To be resolved when finished.
  */
-async function exists({ code }) {
-  let languages = [];
-  const snapshot = await firebaseAdmin
+function exists({ code }) {
+  return firebaseAdmin
     .firestore()
     .collection("languages")
     .where("code", "==", code)
-    .get();
-
-  snapshot.forEach(doc => languages.push(doc.data()));
-
-  return languages.length > 0;
+    .get()
+    .then(snapshot => {
+      const languages = [];
+      snapshot.forEach(doc => languages.push(doc.data()));
+      return languages.length > 0;
+    });
 }
 
 /**
@@ -48,13 +48,13 @@ async function exists({ code }) {
  * @returns {Promise} To be resolved with all languages.
  */
 async function get() {
-  const languages = [];
-
-  await firebaseAdmin
+  return firebaseAdmin
     .firestore()
     .collection("languages")
     .get()
-    .then(snapshot => snapshot.forEach(doc => languages.push(doc.data())));
-
-  return languages;
+    .then(snapshot => {
+      const languages = [];
+      snapshot.forEach(doc => languages.push(doc.data()));
+      return languages;
+    });
 }

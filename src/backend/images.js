@@ -35,17 +35,17 @@ function add({ id, storageId, format, mimeType, width, height }) {
  * @param {string} image.id Id of the image.
  * @returns {Promise.<boolean>} To be resolved when finished.
  */
-async function exists({ id }) {
-  let images = [];
-  const snapshot = await firebaseAdmin
+function exists({ id }) {
+  return firebaseAdmin
     .firestore()
     .collection("images")
     .where("id", "==", id)
-    .get();
-
-  snapshot.forEach(doc => images.push(doc.data()));
-
-  return images.length > 0;
+    .get()
+    .then(snapshot => {
+      const images = [];
+      snapshot.forEach(doc => images.push(doc.data()));
+      return images.length > 0;
+    });
 }
 
 /**

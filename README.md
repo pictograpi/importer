@@ -90,32 +90,74 @@ To make this easier we have uploaded to the Pictograpi CDN some package of picto
 
 * Package 21/10/2016: https://cdn.pictograpi.com/api-assets/pictographs-21102016.zip
 
-### Import pictographs
-
-The importer supports different tasks depending on your needs.
-
-#### Runing a full import
+### Runing a full import
 
 This command will run a full import of everything found in the ZIP file.
 
 ```
-npm run importer
+npm run importer-pictographs
 ```
 
 A full log will be created in the file `./importer-debug.log`.
 
-#### Resuming previous execution
+### Resuming previous execution
 
 If something goes wrong or you split the execution in batches, you may use this command.
 
 ```
-# env CONTINUE=image-id.png npm run importer
+# env CONTINUE=image-id.png npm run importer-pictographs
 # For example:
 
-env CONTINUE=27591.png npm run importer
+env CONTINUE=27591.png npm run importer-pictographs
 ```
 
 Using the previous command, the importer will continue from the image with id 27591.png.
+
+## Import verbs
+
+This task imports a list of verbs into the database.
+
+**It must be run after importing pictographs**
+
+### Download verbs
+
+This task will help you download a package of verbs.
+
+```
+# env URL=url.zip npm run download
+# For example:
+env URL=https://cdn.pictograpi.com/verbs.zip npm run download
+```
+
+To make this easier we have uploaded to the Pictograpi CDN a package of verbs. Use one URL below:
+
+* Package 21/10/2016: https://cdn.pictograpi.com/api-assets/verbs-21102016.zip
+
+### Running a full import
+
+This command will run a full import of the verbs:
+
+```
+# env LANGUAGE=languageCode npm run importer-verbs
+# For example:
+env LANGUAGE=es-ES npm run importer-verbs
+```
+
+You should specify which language you want to import, **they are case sensitive.**
+
+### Resuming previous execution
+
+Importing verbs may fail or may be split into different task. You may use this command below:
+
+```
+# env CONTINUE="verb" npm run importer-verbs
+# For example:
+env CONTINUE="bailar" npm run importer-verbs
+```
+
+Put your verbs between commas. Previous command would continue importing from the verb bailar.
+
+You may also modify the verbs file to remove all those verbs already included in the database.
 
 ## API Schema
 
