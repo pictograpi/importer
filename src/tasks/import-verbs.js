@@ -95,12 +95,16 @@ async function addVerb(verb, language) {
           imageId
         });
 
-        await backendWords.add({
-          word: tense,
-          languageCode: language.code,
-          typeCode: "verb",
-          imageId
-        });
+        try {
+          await backendWords.add({
+            word: tense,
+            languageCode: language.code,
+            typeCode: "verb",
+            imageId
+          });
+        } catch (error) {
+          logger.info("Error adding tense:", tense, error);
+        }
       }
     }
   }
