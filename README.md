@@ -177,17 +177,17 @@ Pictograpi Importer uses two things of Google Firebase:
     "width": "(Number) Width of the image."
   }],
   "languages": [{
-    "code": "(String) Unique code of the language. es-ES, es-CA, etc.",
-    "name": "(String) Humanize name of the language"
+    "code": "(String.<"es-ES", "en-GB", "fr-FR", "ca-ES", "it-IT", "de-DE", "pt-PT", "pt-BR", "gl-ES", "eu-ES">) Unique code of the language. es-ES, es-CA, etc.",
+    "name": "(String.<"spanish - spain", "english - united kingdom", "french - france", "catalan - catalan", "italian - italy", "german - germany", "portuguese", "portuguese - brazil", "galician - galician", "basque - basque">) Humanize name of the language"
   }],
   "types": [{
-    "code": "(String) Unique code of the type. adjective, common-noun, etc.",
-    "name": "(String) Humanize name of the type"
+    "code": "(String.<"common-noun", "adjective", "verb", "miscellanea", "proper-noun", "social">) Unique code of the type. adjective, common-noun, etc.",
+    "name": "(String.<"common noun", "adjective", "verb", "miscellanea", "proper noun", "social">) Humanize name of the type"
   }],
   "words": [{
     "imageId": "(Number) Id referencing the image",
     "languageCode": "(String) Code referencing the language",
-    "typeCode": "(String) Code referencing the type",
+    "typeCode": "(String) Code referencing the type.",
     "word": "(String) Word describing the pictograph"
   }]
 }
